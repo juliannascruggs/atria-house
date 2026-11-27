@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="site-version" content="1795757490">
-<script>(function(){var cur="1795757490";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
+<meta name="site-version" content="1795757747">
+<script>(function(){var cur="1795757747";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
 <title>Atria House</title>
 <style>
 :root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
@@ -144,20 +144,21 @@ function send(v){var prev=votes[cur];if(v)votes[cur]=v;else delete votes[cur];pa
  fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:cur,vote:v})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){votes=d;badges();paint()}).catch(function(){if(prev)votes[cur]=prev;else delete votes[cur];paint();badges()})}
 function el(t,x,y,size){var e=document.createElement("div");e.className="fx";e.textContent=t;e.style.left=x+"px";e.style.top=y+"px";e.style.fontSize=(size||32)+"px";document.body.appendChild(e);return e}
 function center(b){var r=b.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]}
+function slow(o){o.duration*=2.2;if(o.delay)o.delay*=2.2;return o}
 function celebrate(){var c=center(bu),x=c[0],y=c[1];
- var h=el("❤️",x-40,y-40,80);h.animate([{transform:"scale(.2)",opacity:1},{transform:"scale(3.2)",opacity:1,offset:.6},{transform:"scale(4.5)",opacity:0}],{duration:1100,easing:"ease-out"}).onfinish=function(){h.remove()};
+ var h=el("❤️",x-40,y-40,80);h.animate([{transform:"scale(.2)",opacity:1},{transform:"scale(3.2)",opacity:1,offset:.6},{transform:"scale(4.5)",opacity:0}],slow({duration:1100,easing:"ease-out"})).onfinish=function(){h.remove()};
  var cols=["#ff3b30","#ff9500","#ffcc00","#34c759","#00c7be","#007aff","#af52de"];
  for(var i=0;i<14;i++){(function(i){var L=document.createElement("div");L.className="laser";L.style.left=x+"px";L.style.top=y+"px";L.style.background=cols[i%7];L.style.color=cols[i%7];var a=i*360/14;document.body.appendChild(L);
-  L.animate([{width:"0px",transform:"rotate("+a+"deg)",opacity:1},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+40)+"deg)",opacity:.9,offset:.7},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+60)+"deg)",opacity:0}],{duration:1000,delay:i*25,easing:"ease-out"}).onfinish=function(){L.remove()}})(i)}
+  L.animate([{width:"0px",transform:"rotate("+a+"deg)",opacity:1},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+40)+"deg)",opacity:.9,offset:.7},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+60)+"deg)",opacity:0}],slow({duration:1000,delay:i*25,easing:"ease-out"})).onfinish=function(){L.remove()}})(i)}
  var sp=["✨","✨","⭐","✨","🌟","✨","💫"];
  for(var j=0;j<70;j++){(function(j){var e=el(sp[j%sp.length],x-14,y-14,16+Math.random()*24),ang=Math.random()*Math.PI*2,d=100+Math.random()*Math.max(innerWidth,innerHeight)*.6;
-  e.animate([{transform:"translate(0,0) scale(.3)",opacity:1},{transform:"translate("+Math.cos(ang)*d*.7+"px,"+Math.sin(ang)*d*.7+"px) scale(1.3) rotate("+(Math.random()*360)+"deg)",opacity:1,offset:.6},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(.6) rotate("+(Math.random()*720)+"deg)",opacity:0}],{duration:1100+Math.random()*900,delay:Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"}).onfinish=function(){e.remove()}})(j)}
+  e.animate([{transform:"translate(0,0) scale(.3)",opacity:1},{transform:"translate("+Math.cos(ang)*d*.7+"px,"+Math.sin(ang)*d*.7+"px) scale(1.3) rotate("+(Math.random()*360)+"deg)",opacity:1,offset:.6},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(.6) rotate("+(Math.random()*720)+"deg)",opacity:0}],slow({duration:1100+Math.random()*900,delay:Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"})).onfinish=function(){e.remove()}})(j)}
  var hs=["❤️","💖","💕","💗","💓","💞","💘"];
  for(var q=0;q<40;q++){(function(q){var e=el(hs[q%hs.length],x-12,y-12,14+Math.random()*20),ang=Math.random()*Math.PI*2,d=80+Math.random()*260,dl=150+Math.random()*700;
-  var a=e.animate([{transform:"translate(0,0) scale(.2)",opacity:1},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(1.1)",opacity:1,offset:.7},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(2.4)",opacity:0}],{duration:900+Math.random()*500,delay:dl,easing:"ease-out"});
+  var a=e.animate([{transform:"translate(0,0) scale(.2)",opacity:1},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(1.1)",opacity:1,offset:.7},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(2.4)",opacity:0}],slow({duration:900+Math.random()*500,delay:dl,easing:"ease-out"}));
   a.onfinish=function(){var r=e.getBoundingClientRect();e.remove();
    for(var m=0;m<5;m++){(function(m){var f=el(m%2?"✨":"💗",r.left,r.top,10+Math.random()*8),an=Math.random()*Math.PI*2,dd=25+Math.random()*45;
-    f.animate([{transform:"translate(0,0) scale(.5)",opacity:1},{transform:"translate("+Math.cos(an)*dd+"px,"+Math.sin(an)*dd+"px) scale(1)",opacity:0}],{duration:500+Math.random()*300,easing:"ease-out"}).onfinish=function(){f.remove()}})(m)}}})(q)}}
+    f.animate([{transform:"translate(0,0) scale(.5)",opacity:1},{transform:"translate("+Math.cos(an)*dd+"px,"+Math.sin(an)*dd+"px) scale(1)",opacity:0}],slow({duration:500+Math.random()*300,easing:"ease-out"})).onfinish=function(){f.remove()}})(m)}}})(q)}}
 function poop(){var c=center(bd),x=c[0],y=c[1],bottom=innerHeight-60;
  var t=el("👎",x-24,y-24,48),fall=bottom-y,frames=[];
  for(var k=0;k<=20;k++){var f=k/20;frames.push({transform:"translate("+Math.sin(f*Math.PI*4)*(60*(1-f))+"px,"+(f*f*fall)+"px) rotate("+(f*900)+"deg) scale("+(1-f*.3)+")"})}
