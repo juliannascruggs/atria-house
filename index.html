@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="site-version" content="1795753031">
-<script>(function(){var cur="1795753031";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
+<meta name="site-version" content="1795753405">
+<script>(function(){var cur="1795753405";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
 <title>Atria House</title>
 <style>
 :root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
@@ -45,6 +45,10 @@ figcaption b{display:block;margin-bottom:2px}
 .insp .col{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:6px}
 .insp .col img{height:180px}
 @media(max-width:600px){.insp .col{grid-template-columns:repeat(2,1fr)}.insp .col img{height:140px}}
+#lb{position:fixed;inset:0;background:rgba(20,14,10,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:12px;cursor:zoom-out}
+#lb.on{display:flex}#lb img{max-width:100%;max-height:92vh;border-radius:4px;object-fit:contain}
+#lb .x{position:absolute;top:10px;right:14px;color:#EFE4D3;font:32px/1 system-ui;background:none;border:0;cursor:pointer}
+main img,section img{cursor:zoom-in}
 pre{white-space:pre-wrap;background:rgba(0,0,0,.25);padding:18px;border-radius:8px;font:14px/1.6 ui-monospace,Menlo,monospace;color:var(--bone)}
 footer{padding:30px 6vw;font:13px/1.6 system-ui;color:var(--mush);background:var(--cocoa)}
 @media(max-width:600px){figure img{height:240px}section{padding:48px 5vw}}
@@ -113,5 +117,10 @@ Mood: a clean shell with bold color in a few deliberate places. Not beige, not b
 </div></section>
 
 <footer>Atria House · design proposal. Reference photos belong to their photographers.</footer>
+<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""></div>
+<script>(function(){var lb=document.getElementById("lb"),li=lb.querySelector("img");
+document.querySelectorAll("section img").forEach(function(im){im.addEventListener("click",function(){li.src=im.currentSrc||im.src;li.alt=im.alt;lb.classList.add("on")})});
+lb.addEventListener("click",function(){lb.classList.remove("on")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("on")})})();</script>
 </body>
 </html>
