@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="site-version" content="1795758747">
+<script>(function(){var cur="1795758747";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
+<title>v2 · Atria House</title>
+<style>
+:root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--cocoa);font:18px/1.6 Georgia,"Iowan Old Style",serif}
+a{color:var(--ox)}
+header{padding:12vh 6vw 8vh;background:var(--cocoa);color:var(--bone)}
+header h1{font-size:clamp(48px,9vw,110px);font-weight:400;line-height:.95;margin:0 0 18px}
+header p{max-width:640px;font-size:20px;margin:0}
+.k{font:600 12px/1 system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);margin-bottom:14px}
+section{padding:64px 6vw;max-width:1200px;margin:0 auto}
+h2{font-size:clamp(32px,5vw,52px);font-weight:400;margin:0 0 16px;line-height:1.05}
+.lede{font-size:20px;max-width:760px}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:20px}
+.sw{background:#fff;border-radius:8px;overflow:hidden;font:14px/1.3 system-ui}
+.sw i{display:block;height:110px}
+.sw span{display:block;padding:10px 12px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));margin-top:20px}
+figure{margin:0;background:#fff;border-radius:8px;overflow:hidden}
+figure img{width:100%;height:300px;object-fit:cover;display:block;background:var(--mush)}
+figcaption{padding:12px 14px 14px;font:15px/1.45 system-ui;color:var(--cocoa)}
+figcaption b{display:block;margin-bottom:2px}
+.rooms{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:20px}
+.room{background:#fff;border-radius:8px;padding:16px;font:15px/1.5 system-ui}
+.bar{display:flex;height:48px;border-radius:6px;overflow:hidden;margin-bottom:10px}
+.bar i{flex:1}
+.three{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:20px}
+.three p{font:15px/1.55 system-ui;margin:10px 14px 16px}
+.three h3{font-weight:400;font-size:24px;margin:14px 14px 0}
+.dark{background:var(--cocoa);color:var(--bone);max-width:none}
+.dark .inner{max-width:1200px;margin:0 auto}
+.inspo{display:grid;gap:40px;margin-top:20px}
+.insp h3{font-weight:400;font-size:30px;margin:0 0 4px}
+.insp p{font:16px/1.55 system-ui;margin:0 0 14px;max-width:700px}
+.insp img{display:block;width:100%;object-fit:cover;border-radius:6px;background:var(--mush)}
+.insp img.hd{height:min(62vw,560px)}
+.insp .col{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:6px}
+.insp .col img{height:180px}
+@media(max-width:600px){.insp .col{grid-template-columns:repeat(2,1fr)}.insp .col img{height:140px}}
+#lb{position:fixed;inset:0;background:rgba(20,14,10,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:12px;cursor:zoom-out}
+#lb.on{display:flex}#lb img{max-width:100%;max-height:92vh;border-radius:4px;object-fit:contain}
+#lb .x{position:absolute;top:10px;right:14px;color:#EFE4D3;font:32px/1 system-ui;background:none;border:0;cursor:pointer}
+main img,section img{cursor:zoom-in}
+#lb{flex-direction:column}
+#lb .vote{display:flex;gap:22px;margin-top:14px}
+#lb .vote button{font-size:42px;line-height:1;width:76px;height:76px;border-radius:50%;border:2px solid rgba(239,228,211,.5);background:rgba(255,255,255,.08);cursor:pointer;filter:grayscale(1) brightness(1.4);transition:transform .15s}
+#lb .vote button:active{transform:scale(.9)}
+#lb .vote button.on{filter:none;border-color:#EFE4D3}
+#lb .vote button.up.on{background:#4F7A45}
+#lb .vote button.down.on{background:#B0201B}
+.badge{position:absolute;top:8px;right:8px;font-size:22px;line-height:1;background:rgba(239,228,211,.92);border-radius:999px;padding:5px 7px;pointer-events:none}
+.pw{position:relative;display:block}
+.fx{position:fixed;pointer-events:none;z-index:200;will-change:transform,opacity}
+.laser{position:fixed;left:50%;top:50%;height:6px;width:0;transform-origin:0 50%;pointer-events:none;z-index:199;border-radius:3px;box-shadow:0 0 12px currentColor}
+pre{white-space:pre-wrap;background:rgba(0,0,0,.25);padding:18px;border-radius:8px;font:14px/1.6 ui-monospace,Menlo,monospace;color:var(--bone)}
+footer{padding:30px 6vw;font:13px/1.6 system-ui;color:var(--mush);background:var(--cocoa)}
+@media(max-width:600px){figure img{height:240px}section{padding:48px 5vw}}
+</style>
+</head>
+<body>
+<header>
+<div class="k">Design proposal</div>
+<h1>Atria House</h1>
+<p>Warm and earthy, with real color: a clean shell with bold moments, so it never reads bland or beige.</p>
+</header>
+
+<section>
+<div class="k">Where it comes from</div>
+<h2>Three influences</h2>
+<div class="inspo"><div class="insp"><h3>Nosara</h3><p>Warm wood against stone, rooms open to the green, and fewer, better-made pieces.</p><img class="hd" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6295232ce32fb90bbee51ff8/027f6286-e59a-4120-933e-031db5e1e7da/IMG_0032.jpg?format=1500w" alt="Pool courtyard in tropical green"><div class="col"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6295232ce32fb90bbee51ff8/6c6e3f16-7a75-40c9-87d7-0ef9cd50777c/121.jpg?format=1500w" alt="Open pavilion, floating roof"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6295232ce32fb90bbee51ff8/188be4d4-2e34-45f1-a5ce-24e67faca4f1/IMG_2447.jpg?format=1500w" alt="Terrace above the treetops"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6295232ce32fb90bbee51ff8/13944a35-7c11-4977-824e-b4f395f7d26c/IMG_2419-2.jpg?format=1500w" alt="Timber entry, pale stone"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/6a2985680c17036088177086/6bdf74ee-ef2b-4b89-a607-b28e16151232/ND_HarmonyVillas_Carousel_3.png?format=1500w" alt="Terracotta tile under timber beams"></div></div><div class="insp"><h3>Ibiza</h3><p>Hand-finished plaster walls, terracotta, built-in seating, and shaded outdoor rooms you actually use.</p><img class="hd" loading="lazy" src="https://media.architecturaldigest.com/photos/58c2fb69b0c5b57268255f18/16:9/w_2560%2Cc_limit/0513-AD-CARD-15.jpg" alt="Pool under timber shades"><div class="col"><img loading="lazy" src="https://www.domino.com/wp-content/uploads/2026/08/IBIZA_2420482.jpeg" alt="Terrace: terracotta, dark wood, greenery"><img loading="lazy" src="https://media.architecturaldigest.com/photos/59075883ca0b76474b000ee7/master/pass/0617-AD-ROMU07-01_sq.jpg" alt="Timber rafters, shaded dining"><img loading="lazy" src="https://media.architecturaldigest.com/photos/58c2fb68ef95ec7e84c4b1a5/master/w_1600%2Cc_limit/0513-AD-CARD-04.jpg" alt="Beamed living room, garden doors"><img loading="lazy" src="https://cdn.mos.cms.futurecdn.net/flexiimages/skjl3eev6l1773738380.png" alt="Rough timber mantel, woven chairs"><img loading="lazy" src="https://cdn.mos.cms.futurecdn.net/XwdAynmLqxLJyT3VNjeyMQ.jpg" alt="Bougainvillea at a stone entry"><img loading="lazy" src="https://cdn.mos.cms.futurecdn.net/dCvjme6FpJKW7VwJ6AHjBf.jpg" alt="Blue sofas, stone fireplace"></div></div><div class="insp"><h3>Havan</h3><p>Starielle’s Hill Country lodge: dark wood, rough stone, and rich color in the rugs, art and a few special pieces.</p><img class="hd" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/62f6c381fbdd5d27466f980f/ac80f54c-4233-4c3d-827d-32017d145f07/Havan-030-+Kieran+Reeves+Photography+%5BWeb-Res%5D.jpg" alt="Hall: cranberry runner, red art"><div class="col"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/682a0bc2bcd9947304050e85/345f27ff-8663-4de6-8c52-e7d07ffee8db/Havan-039-Edit-+Kieran+Reeves+Photography+%5BWeb-Res%5D.jpg" alt="Mantel: candles and crystals"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/62f6c381fbdd5d27466f980f/e3dcec7a-62cc-46b6-b8f5-c51f8074988f/Havan-028-Edit-+Kieran+Reeves+Photography+%5BWeb-Res%5D.jpg?format=1500w" alt="Console with candles and greenery"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/62f6c381fbdd5d27466f980f/b446acbb-66a0-499a-bde3-864087e746e1/Havan-039-Edit-+Kieran+Reeves+Photography+%5BWeb-Res%5D.jpg?format=1500w" alt="Red flowers against rough stone"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/682a0bc2bcd9947304050e85/00d922e0-58d7-44bd-af92-47d93617b241/Havan-016-Edit-+Kieran+Reeves+Photography+%5BWeb-Res%5D.jpg" alt="Pool terrace, rust cushions"></div></div></div>
+</section>
+
+<section style="padding-top:0">
+<div class="k">Reference rooms</div>
+<h2>What to take from each</h2>
+<div class="grid">
+<figure><img loading="lazy" src="https://cdn.hoog.design/2024/09/30085945/NV-Interior-Weespersluis-04.jpg" alt="Warm wood and stone kitchen"><figcaption><b>Warm wood and stone kitchen</b>Woofum ipsum dolor sit amet, zoomies consectetur borkus.</figcaption></figure>
+<figure><img loading="lazy" src="https://media.architecturaldigest.com/photos/6ada234db3049da174fc25e1/master/w_1600%2Cc_limit/FHMPRJ-050_FL26_SCENE_9.jpeg" alt="Curves"><figcaption><b>Curves</b>Snooto belly rubs, boop elit sed do treatus maximus.</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.mos.cms.futurecdn.net/2Z3wVLGRNMtZKVU6BQJpuT.jpg" alt="Blue rug, rich sofa"><figcaption><b>Blue rug, rich sofa</b>Floofus pupperino, tippy taps et sploot magna aliqua.</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.hoog.design/2024/09/30085954/NV-Interior-Weespersluis-07.jpg" alt="Dark doors, cream hall"><figcaption><b>Dark doors, cream hall</b>Heckin’ good boi, wigglebutt ad minim fetchum.</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.hoog.design/2021/05/04142814/Miryam-Schotman-Interieurs-Prachtige-woonboerderij-in-Giessenburg-14.jpg" alt="Timber beams, rust throw"><figcaption><b>Timber beams, rust throw</b>Bork bork laboris, nap in sunbeam ut aliquip ex kibble.</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.hoog.design/2023/06/07101654/STUDIO-JEROEN-VAN-ZWETSELAAR_interieur_architect_Waterfront_Villa_0729-scaled.jpg" alt="Rust chairs, pale table"><figcaption><b>Rust chairs, pale table</b>Doggo duis aute, chonkus in voluptate tail wagus.</figcaption></figure>
+<figure><img loading="lazy" src="https://cdn.hoog.design/2020/12/07160638/de-waal-Exclusief-schilderwerk-werkkamer-kasteel03-960x640.jpg" alt="Dark wood and a patterned rug"><figcaption><b>Dark wood and a patterned rug</b>Squirrel! Excepteur sint occaecat ball throwum.</figcaption></figure>
+<figure><img loading="lazy" src="../img/curtains-ref.jpg" alt="Curtains"><figcaption><b>Curtains</b>Luxe floor-to-ceiling drapes behind a valance, with crown molding in front of the valance.</figcaption></figure>
+</div>
+</section>
+
+<section style="padding-top:0">
+<div class="k">The palette</div>
+<h2>Nine colors</h2>
+<p class="lede">Bone is the base. Each room takes two or three of the others.</p>
+<div class="pal">
+<div class="sw"><i style="background:#EFE4D3;border-bottom:1px solid #e2d6c3"></i><span><b>Bone</b><br>#EFE4D3</span></div>
+<div class="sw"><i style="background:#B09C8A"></i><span><b>Mushroom</b><br>#B09C8A</span></div>
+<div class="sw"><i style="background:#C8603A"></i><span><b>Terracotta</b><br>#C8603A</span></div>
+<div class="sw"><i style="background:#BF8B36"></i><span><b>Ochre</b><br>#BF8B36</span></div>
+<div class="sw"><i style="background:#4B332B"></i><span><b>Dark cocoa</b><br>#4B332B</span></div>
+<div class="sw"><i style="background:#B0201B"></i><span><b>Red</b><br>#B0201B</span></div>
+<div class="sw"><i style="background:#4F7A45"></i><span><b>Green</b><br>#4F7A45</span></div>
+<div class="sw"><i style="background:#8699A5"></i><span><b>Blue</b><br>#8699A5</span></div>
+<div class="sw"><i style="background:#53726C"></i><span><b>Teal tile</b><br>#53726C</span></div>
+</div>
+<div class="rooms">
+<div class="room"><div class="bar"><i style="background:#EFE4D3"></i><i style="background:#B0201B"></i><i style="background:#8699A5"></i><i style="background:#BF8B36"></i></div><b>Living room</b><br>Bone, red, blue, ochre</div>
+<div class="room"><div class="bar"><i style="background:#EFE4D3"></i><i style="background:#B0201B"></i><i style="background:#C8603A"></i><i style="background:#BF8B36"></i></div><b>Entry</b><br>Bone, red, terracotta, ochre</div>
+<div class="room"><div class="bar"><i style="background:#EFE4D3"></i><i style="background:#53726C"></i><i style="background:#4F7A45"></i><i style="background:#4B332B"></i></div><b>Bath</b><br>Bone, teal tile, green, dark cocoa</div>
+<div class="room"><div class="bar"><i style="background:#EFE4D3"></i><i style="background:#C8603A"></i><i style="background:#4F7A45"></i><i style="background:#8699A5"></i></div><b>Bedroom</b><br>Bone, terracotta, green, blue</div>
+</div>
+</section>
+
+<section class="dark"><div class="inner">
+<div class="k">Rendering prompt</div>
+<h2>For ChatGPT</h2>
+<p class="lede">Paste this in with a simplified photo of a room.</p>
+<pre>Restyle this room in the "Atria House" palette. Keep the architecture, windows, doors, floor plan and camera angle exactly as in the photo. Do not move walls or change room size.
+Palette: bone (#EFE4D3), mushroom (#B09C8A), terracotta (#C8603A), ochre (#BF8B36), dark cocoa (#4B332B), bright red (#B0201B), green (#4F7A45), blue (#8699A5), teal tile (#53726C).
+Bone is the base for walls and curtains. Use two or three of the other colors in each room.
+Furniture: a curved sectional, a rounded coffee table, a red sofa on a blue rug, dark cocoa wood, geometric art in the palette colors.
+Influences: Nosara (warm wood, stone, open to greenery), Ibiza (plaster walls, terracotta, built-in seating), Havan (dark wood, rough stone, collected objects).
+Curtains: luxe floor-to-ceiling drapes hung behind a valance, with crown molding in front of the valance.
+Mood: a clean shell with bold color in a few deliberate places. Not beige, not boho, not farmhouse.</pre>
+</div></section>
+
+<footer>Atria House · design proposal. Reference photos belong to their photographers.</footer>
+<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><button class="up" aria-label="Thumbs up">👍</button><button class="down" aria-label="Thumbs down">👎</button></div></div>
+<script>(function(){
+var API="https://juliannas-mac-mini.tail6a2ec1.ts.net:8443/atria-votes";
+var lb=document.getElementById("lb"),li=lb.querySelector("img"),bu=lb.querySelector(".up"),bd=lb.querySelector(".down");
+var votes={},cur=null;
+function key(u){var h=5381;for(var i=0;i<u.length;i++){h=((h<<5)+h+u.charCodeAt(i))>>>0}var g=0;for(var j=u.length-1;j>=0;j--){g=((g<<5)+g+u.charCodeAt(j))>>>0}return("00000000"+h.toString(16)).slice(-8)+("0000"+(g>>>0).toString(16)).slice(-4)}
+var imgs=[].slice.call(document.querySelectorAll("section img"));
+imgs.forEach(function(im){var w=document.createElement("span");w.className="pw";im.parentNode.insertBefore(w,im);w.appendChild(im);im.dataset.k=key(im.getAttribute("src"));
+ im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;paint();lb.classList.add("on")})});
+function badges(){imgs.forEach(function(im){var w=im.parentNode,b=w.querySelector(".badge"),v=votes[im.dataset.k];if(!v){if(b)b.remove();return}if(!b){b=document.createElement("span");b.className="badge";w.appendChild(b)}b.textContent=v==="up"?"👍":"👎"})}
+function paint(){var v=votes[cur];bu.classList.toggle("on",v==="up");bd.classList.toggle("on",v==="down")}
+function load(){fetch(API,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){votes=d||{};badges();if(cur)paint()}).catch(function(){})}
+function send(v){var prev=votes[cur];if(v)votes[cur]=v;else delete votes[cur];paint();badges();
+ fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:cur,vote:v})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){votes=d;badges();paint()}).catch(function(){if(prev)votes[cur]=prev;else delete votes[cur];paint();badges()})}
+function el(t,x,y,size){var e=document.createElement("div");e.className="fx";e.textContent=t;e.style.left=x+"px";e.style.top=y+"px";e.style.fontSize=(size||32)+"px";document.body.appendChild(e);return e}
+function center(b){var r=b.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]}
+function slow(o){o.duration*=2.2;if(o.delay)o.delay*=2.2;return o}
+function celebrate(){var c=center(bu),x=c[0],y=c[1];
+ var h=el("❤️",x-40,y-40,80);h.animate([{transform:"scale(.2)",opacity:1},{transform:"scale(3.2)",opacity:1,offset:.6},{transform:"scale(4.5)",opacity:0}],slow({duration:1100,easing:"ease-out"})).onfinish=function(){h.remove()};
+ var cols=["#ff3b30","#ff9500","#ffcc00","#34c759","#00c7be","#007aff","#af52de"];
+ for(var i=0;i<14;i++){(function(i){var L=document.createElement("div");L.className="laser";L.style.left=x+"px";L.style.top=y+"px";L.style.background=cols[i%7];L.style.color=cols[i%7];var a=i*360/14;document.body.appendChild(L);
+  L.animate([{width:"0px",transform:"rotate("+a+"deg)",opacity:1},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+40)+"deg)",opacity:.9,offset:.7},{width:Math.max(innerWidth,innerHeight)+"px",transform:"rotate("+(a+60)+"deg)",opacity:0}],slow({duration:1000,delay:i*25,easing:"ease-out"})).onfinish=function(){L.remove()}})(i)}
+ var sp=["✨","✨","⭐","✨","🌟","✨","💫"];
+ for(var j=0;j<70;j++){(function(j){var e=el(sp[j%sp.length],x-14,y-14,16+Math.random()*24),ang=Math.random()*Math.PI*2,d=100+Math.random()*Math.max(innerWidth,innerHeight)*.6;
+  e.animate([{transform:"translate(0,0) scale(.3)",opacity:1},{transform:"translate("+Math.cos(ang)*d*.7+"px,"+Math.sin(ang)*d*.7+"px) scale(1.3) rotate("+(Math.random()*360)+"deg)",opacity:1,offset:.6},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(.6) rotate("+(Math.random()*720)+"deg)",opacity:0}],slow({duration:1100+Math.random()*900,delay:Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"})).onfinish=function(){e.remove()}})(j)}
+ var hs=["❤️","💖","💕","💗","💓","💞","💘"];
+ for(var q=0;q<40;q++){(function(q){var e=el(hs[q%hs.length],x-12,y-12,14+Math.random()*20),ang=Math.random()*Math.PI*2,d=80+Math.random()*260,dl=150+Math.random()*700;
+  var a=e.animate([{transform:"translate(0,0) scale(.2)",opacity:1},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(1.1)",opacity:1,offset:.7},{transform:"translate("+Math.cos(ang)*d+"px,"+Math.sin(ang)*d+"px) scale(2.4)",opacity:0}],slow({duration:900+Math.random()*500,delay:dl,easing:"ease-out"}));
+  a.onfinish=function(){var r=e.getBoundingClientRect();e.remove();
+   for(var m=0;m<5;m++){(function(m){var f=el(m%2?"✨":"💗",r.left,r.top,10+Math.random()*8),an=Math.random()*Math.PI*2,dd=25+Math.random()*45;
+    f.animate([{transform:"translate(0,0) scale(.5)",opacity:1},{transform:"translate("+Math.cos(an)*dd+"px,"+Math.sin(an)*dd+"px) scale(1)",opacity:0}],slow({duration:500+Math.random()*300,easing:"ease-out"})).onfinish=function(){f.remove()}})(m)}}})(q)}}
+function poop(){var c=center(bd),x=c[0],y=c[1],bottom=innerHeight-60;
+ var t=el("👎",x-24,y-24,48),fall=bottom-y,frames=[];
+ for(var k=0;k<=20;k++){var f=k/20;frames.push({transform:"translate("+Math.sin(f*Math.PI*4)*(60*(1-f))+"px,"+(f*f*fall)+"px) rotate("+(f*900)+"deg) scale("+(1-f*.3)+")"})}
+ t.animate(frames,{duration:1300,easing:"ease-in"}).onfinish=function(){t.remove();
+  for(var j=0;j<16;j++){(function(j){var e=el("💩",x-18,bottom-10,22+Math.random()*26),dx=(Math.random()-.5)*360,up=140+Math.random()*260;
+   e.animate([{transform:"translate(0,0) scale(.3)",opacity:1},{transform:"translate("+dx*.6+"px,"+(-up)+"px) scale(1.1) rotate("+(dx)+"deg)",opacity:1,offset:.45},{transform:"translate("+dx+"px,"+(60)+"px) scale(.9) rotate("+(dx*2)+"deg)",opacity:0}],{duration:1300+Math.random()*500,easing:"cubic-bezier(.2,.7,.4,1)"}).onfinish=function(){e.remove()}})(j)}
+  var big=el("💩",x-36,bottom-50,72);big.animate([{transform:"scale(.2)"},{transform:"scale(1.4)",offset:.4},{transform:"scale(1)",opacity:0}],{duration:1400}).onfinish=function(){big.remove()}}}
+bu.addEventListener("click",function(e){e.stopPropagation();if(votes[cur]==="up"){send(null)}else{send("up");celebrate()}});
+bd.addEventListener("click",function(e){e.stopPropagation();if(votes[cur]==="down"){send(null)}else{send("down");poop()}});
+lb.querySelector("img").addEventListener("click",function(e){e.stopPropagation()});
+lb.addEventListener("click",function(){lb.classList.remove("on")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("on")});
+load();setInterval(load,20000);
+})();</script>
+</body>
+</html>
