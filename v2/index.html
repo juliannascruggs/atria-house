@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="site-version" content="1795828617">
-<script>(function(){var cur="1795828617";function chk(){fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})}chk();setInterval(chk,60000);document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()})})();</script>
+<meta name="site-version" content="1795831258">
+<script>(function(){var cur="1795831258";function chk(){fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})}chk();setInterval(chk,60000);document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()})})();</script>
 <title>v2 · Atria House</title>
 <style>
 :root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
@@ -76,7 +76,7 @@ footer{padding:30px 6vw;font:13px/1.6 system-ui;color:var(--mush);background:var
 #lb textarea{width:100%;border-radius:8px;border:1px solid rgba(239,228,211,.4);background:rgba(255,255,255,.08);color:#EFE4D3;font:15px/1.4 system-ui;padding:10px;resize:vertical}
 #lb .crow{display:flex;justify-content:space-between;align-items:center;gap:10px}
 #lb .sv{background:#C8603A;border:0;color:#fff;border-radius:999px;padding:8px 16px;font:600 14px system-ui;cursor:pointer}
-#lb #cs{font-size:13px;opacity:.75}
+#lb #cs{font-size:13px;opacity:.75}#cl{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:6px}#cl li{display:flex;gap:8px;align-items:flex-start;background:rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;font:14px/1.4 system-ui;color:#EFE4D3;white-space:pre-wrap}#cl li span{flex:1}#cl li button{background:none;border:0;color:#EFE4D3;opacity:.6;font:18px/1 system-ui;cursor:pointer;padding:0 2px}
 .aitag{position:absolute;left:8px;bottom:8px;font:600 11px/1 system-ui;background:rgba(75,51,43,.82);color:#EFE4D3;border-radius:999px;padding:5px 8px;pointer-events:none}.badge{position:absolute;top:8px;right:8px;font:600 13px/1 system-ui;line-height:1;background:rgba(239,228,211,.94);color:#4B332B;border-radius:999px;padding:6px 9px;pointer-events:none}
 .cbadge{position:absolute;top:8px;left:8px;font-size:16px;line-height:1;background:rgba(239,228,211,.94);border-radius:999px;padding:5px 7px;pointer-events:none}
 </style>
@@ -354,21 +354,21 @@ Mood: a clean shell with bold color in a few deliberate places. Not beige, not b
 </div></section>
 
 <footer>Atria House · design proposal. Reference photos belong to their photographers.</footer>
-<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><div class="rl" id="rl">Not rated yet. Slide to rate.</div><input type="range" id="rs" min="1" max="5" step="1" value="3" class="unset" aria-label="Rating, fuck no to fuck yes"><div class="ends"><span>Fuck no</span><span>Fuck maybe</span><span>Fuck yes</span></div><button class="clr" type="button">Clear rating</button><textarea id="cm" rows="2" maxlength="2000" placeholder="Comments about this photo"></textarea><div class="crow"><span id="cs"></span><button class="sv" type="button">Save comment</button></div></div></div>
+<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><div class="rl" id="rl">Not rated yet. Slide to rate.</div><input type="range" id="rs" min="1" max="5" step="1" value="3" class="unset" aria-label="Rating, fuck no to fuck yes"><div class="ends"><span>Fuck no</span><span>Fuck maybe</span><span>Fuck yes</span></div><button class="clr" type="button">Clear rating</button><ul id="cl"></ul><textarea id="cm" rows="2" maxlength="2000" placeholder="Add a comment about this photo"></textarea><div class="crow"><span id="cs"></span><button class="sv" type="button">Save comment</button></div></div></div>
 <script>(function(){
 var API="https://juliannas-mac-mini.tail6a2ec1.ts.net:8443/atria-votes";
-var lb=document.getElementById("lb"),li=lb.querySelector("img"),rs=document.getElementById("rs"),rl=document.getElementById("rl"),cm=document.getElementById("cm"),cs=document.getElementById("cs"),bu=rs,bd=rs;
+var lb=document.getElementById("lb"),li=lb.querySelector("img"),rs=document.getElementById("rs"),rl=document.getElementById("rl"),cm=document.getElementById("cm"),cs=document.getElementById("cs"),cl=document.getElementById("cl"),bu=rs,bd=rs;
 var votes={},notes={},cur=null;
 var WORDS={1:"Fuck no",2:"Soft no",3:"Fuck maybe",4:"Kind of yes",5:"Fuck yes"},EMO={1:"💩",2:"👎",3:"🤷",4:"👍",5:"❤️"};
 function lvl(v){return v==="up"?5:v==="down"?1:(typeof v==="number"?v:null)}
 function key(u){var h=5381;for(var i=0;i<u.length;i++){h=((h<<5)+h+u.charCodeAt(i))>>>0}var g=0;for(var j=u.length-1;j>=0;j--){g=((g<<5)+g+u.charCodeAt(j))>>>0}return("00000000"+h.toString(16)).slice(-8)+("0000"+(g>>>0).toString(16)).slice(-4)}
 var imgs=[].slice.call(document.querySelectorAll("section img"));
 imgs.forEach(function(im){var w=document.createElement("span");w.className="pw";im.parentNode.insertBefore(w,im);w.appendChild(im);im.dataset.k=key(im.getAttribute("src"));
- im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;paint();paintNote();cs.textContent=notes[cur]?"Saved":"";lb.classList.add("on")})});
+ im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;cm.value="";cs.textContent="";paint();paintNote();lb.classList.add("on")})});
 
 var sws=[].slice.call(document.querySelectorAll(".pal .sw"));
 sws.forEach(function(sw){var i=sw.querySelector("i"),hex=(sw.textContent.match(/#[0-9A-Fa-f]{6}/)||[""])[0].toUpperCase();if(!hex)return;sw.dataset.k=key("color:"+hex);
- sw.addEventListener("click",function(){cur=sw.dataset.k;var c=document.createElement("canvas");c.width=600;c.height=400;var x=c.getContext("2d");x.fillStyle=hex;x.fillRect(0,0,600,400);li.src=c.toDataURL();li.alt=sw.textContent.trim();paint();paintNote();lb.classList.add("on")})});
+ sw.addEventListener("click",function(){cur=sw.dataset.k;var c=document.createElement("canvas");c.width=600;c.height=400;var x=c.getContext("2d");x.fillStyle=hex;x.fillRect(0,0,600,400);li.src=c.toDataURL();li.alt=sw.textContent.trim();cm.value="";cs.textContent="";paint();paintNote();lb.classList.add("on")})});
 function swb(){sws.forEach(function(sw){if(!sw.dataset.k)return;var b=sw.querySelector(".badge"),c=sw.querySelector(".cbadge"),v=lvl(votes[sw.dataset.k]);
  if(!v){if(b)b.remove()}else{if(!b){b=document.createElement("span");b.className="badge";sw.appendChild(b)}b.textContent=EMO[v]+" "+WORDS[v]}
  if(!notes[sw.dataset.k]){if(c)c.remove()}else if(!c){c=document.createElement("span");c.className="cbadge";c.textContent="💬";sw.appendChild(c)}})}
@@ -376,13 +376,15 @@ function badges(){swb();imgs.forEach(function(im){if(/AI recolor/.test(im.alt)&&
  if(!v){if(b)b.remove()}else{if(!b){b=document.createElement("span");b.className="badge";w.appendChild(b)}b.textContent=EMO[v]+" "+WORDS[v]}
  if(!notes[im.dataset.k]){if(c)c.remove()}else if(!c){c=document.createElement("span");c.className="cbadge";c.textContent="💬";w.appendChild(c)}})}
 function paint(){var v=lvl(votes[cur]);if(v){rs.value=v;rs.classList.remove("unset");rl.textContent=EMO[v]+" "+WORDS[v]}else{rs.value=3;rs.classList.add("unset");rl.textContent="Not rated yet. Slide to rate."}}
-function paintNote(){if(document.activeElement!==cm){cm.value=notes[cur]||""}cs.textContent=notes[cur]?"Saved":""}
+function nl(k){var n=notes[k];return Array.isArray(n)?n:(n?[n]:[])}
+function paintNote(){var L=nl(cur);cl.innerHTML="";L.forEach(function(t,i){var li=document.createElement("li"),sp=document.createElement("span"),x=document.createElement("button");sp.textContent=t;x.type="button";x.textContent="×";x.setAttribute("aria-label","Delete comment");x.addEventListener("click",function(e){e.stopPropagation();delNote(i)});li.appendChild(sp);li.appendChild(x);cl.appendChild(li)})}
 function load(){fetch(API,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){votes=d||{};badges();if(cur)paint()}).catch(function(){});
  fetch(API+"/comments",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){notes=d||{};badges();if(cur)paintNote()}).catch(function(){})}
 function send(v){var prev=votes[cur];if(v)votes[cur]=v;else delete votes[cur];paint();badges();
  fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:cur,vote:v})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){votes=d;badges();paint()}).catch(function(){if(prev)votes[cur]=prev;else delete votes[cur];paint();badges()})}
-function saveNote(){var k=cur,t=cm.value.trim();cs.textContent="Saving…";
- fetch(API+"/comments",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:k,text:t||null})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){notes=d;badges();if(cur===k)cs.textContent=t?"Saved":"Removed"}).catch(function(){if(cur===k)cs.textContent="Didn't save. Try again."})}
+function post(k,body,ok){fetch(API+"/comments",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){notes=d||{};badges();if(cur===k){paintNote();ok&&ok()}}).catch(function(){if(cur===k)cs.textContent="Didn't save. Try again."})}
+function saveNote(){var k=cur,t=cm.value.trim();if(!t){cs.textContent="Type a comment first";return}cs.textContent="Saving…";post(k,{id:k,text:t},function(){cm.value="";cs.textContent="Saved"})}
+function delNote(i){var k=cur;cs.textContent="Deleting…";post(k,{id:k,remove:i},function(){cs.textContent="Deleted"})}
 function el(t,x,y,size){var e=document.createElement("div");e.className="fx";e.textContent=t;e.style.left=x+"px";e.style.top=y+"px";e.style.fontSize=(size||32)+"px";document.body.appendChild(e);return e}
 function center(b){var r=b.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]}
 function slow(o){o.duration*=2.2;if(o.delay)o.delay*=2.2;return o}
@@ -412,7 +414,7 @@ rs.addEventListener("input",function(){var v=+rs.value;rs.classList.remove("unse
 rs.addEventListener("change",function(){var v=+rs.value;if(lvl(votes[cur])===v)return;send(v);if(v===5)celebrate();else if(v===1)poop()});
 lb.querySelector(".clr").addEventListener("click",function(){send(null)});
 lb.querySelector(".sv").addEventListener("click",saveNote);
-cm.addEventListener("input",function(){cs.textContent="Not saved yet"});
+cm.addEventListener("input",function(){cs.textContent=cm.value.trim()?"Not saved yet":""});
 lb.querySelector("img").addEventListener("click",function(e){e.stopPropagation()});
 lb.addEventListener("click",function(){lb.classList.remove("on")});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("on")});
