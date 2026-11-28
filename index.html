@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="site-version" content="1795757747">
-<script>(function(){var cur="1795757747";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
+<meta name="site-version" content="1795826925">
+<script>(function(){var cur="1795826925";fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})})();</script>
 <title>Atria House</title>
 <style>
 :root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
@@ -49,20 +49,27 @@ figcaption b{display:block;margin-bottom:2px}
 #lb.on{display:flex}#lb img{max-width:100%;max-height:92vh;border-radius:4px;object-fit:contain}
 #lb .x{position:absolute;top:10px;right:14px;color:#EFE4D3;font:32px/1 system-ui;background:none;border:0;cursor:pointer}
 main img,section img{cursor:zoom-in}
-#lb{flex-direction:column}
-#lb .vote{display:flex;gap:22px;margin-top:14px}
-#lb .vote button{font-size:42px;line-height:1;width:76px;height:76px;border-radius:50%;border:2px solid rgba(239,228,211,.5);background:rgba(255,255,255,.08);cursor:pointer;filter:grayscale(1) brightness(1.4);transition:transform .15s}
-#lb .vote button:active{transform:scale(.9)}
-#lb .vote button.on{filter:none;border-color:#EFE4D3}
-#lb .vote button.up.on{background:#4F7A45}
-#lb .vote button.down.on{background:#B0201B}
-.badge{position:absolute;top:8px;right:8px;font-size:22px;line-height:1;background:rgba(239,228,211,.92);border-radius:999px;padding:5px 7px;pointer-events:none}
 .pw{position:relative;display:block}
 .fx{position:fixed;pointer-events:none;z-index:200;will-change:transform,opacity}
 .laser{position:fixed;left:50%;top:50%;height:6px;width:0;transform-origin:0 50%;pointer-events:none;z-index:199;border-radius:3px;box-shadow:0 0 12px currentColor}
 pre{white-space:pre-wrap;background:rgba(0,0,0,.25);padding:18px;border-radius:8px;font:14px/1.6 ui-monospace,Menlo,monospace;color:var(--bone)}
 footer{padding:30px 6vw;font:13px/1.6 system-ui;color:var(--mush);background:var(--cocoa)}
 @media(max-width:600px){figure img{height:240px}section{padding:48px 5vw}}
+
+#lb{flex-direction:column}
+#lb img{max-height:62vh}
+#lb .vote{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:14px;width:min(520px,94vw);font:15px/1.3 system-ui;color:#EFE4D3;cursor:default}
+#lb .rl{text-align:center;font:600 20px/1.2 system-ui;min-height:24px}
+#lb input[type=range]{width:100%;height:34px;accent-color:#C8603A;cursor:pointer}
+#lb input[type=range].unset{opacity:.45}
+#lb .ends{display:flex;justify-content:space-between;font-size:12px;opacity:.75;margin-top:-6px}
+#lb .clr{align-self:center;background:none;border:0;color:#EFE4D3;opacity:.6;font:13px system-ui;text-decoration:underline;cursor:pointer}
+#lb textarea{width:100%;border-radius:8px;border:1px solid rgba(239,228,211,.4);background:rgba(255,255,255,.08);color:#EFE4D3;font:15px/1.4 system-ui;padding:10px;resize:vertical}
+#lb .crow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+#lb .sv{background:#C8603A;border:0;color:#fff;border-radius:999px;padding:8px 16px;font:600 14px system-ui;cursor:pointer}
+#lb #cs{font-size:13px;opacity:.75}
+.badge{position:absolute;top:8px;right:8px;font:600 13px/1 system-ui;line-height:1;background:rgba(239,228,211,.94);color:#4B332B;border-radius:999px;padding:6px 9px;pointer-events:none}
+.cbadge{position:absolute;top:8px;left:8px;font-size:16px;line-height:1;background:rgba(239,228,211,.94);border-radius:999px;padding:5px 7px;pointer-events:none}
 </style>
 </head>
 <body>
@@ -128,20 +135,28 @@ Mood: a clean shell with bold color in a few deliberate places. Not beige, not b
 </div></section>
 
 <footer>Atria House · design proposal. Reference photos belong to their photographers.</footer>
-<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><button class="up" aria-label="Thumbs up">👍</button><button class="down" aria-label="Thumbs down">👎</button></div></div>
+<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><div class="rl" id="rl">Not rated yet. Slide to rate.</div><input type="range" id="rs" min="1" max="5" step="1" value="3" class="unset" aria-label="Rating, fuck no to fuck yes"><div class="ends"><span>Fuck no</span><span>Maybe</span><span>Fuck yes</span></div><button class="clr" type="button">Clear rating</button><textarea id="cm" rows="2" maxlength="2000" placeholder="Comments about this photo"></textarea><div class="crow"><span id="cs"></span><button class="sv" type="button">Save comment</button></div></div></div>
 <script>(function(){
 var API="https://juliannas-mac-mini.tail6a2ec1.ts.net:8443/atria-votes";
-var lb=document.getElementById("lb"),li=lb.querySelector("img"),bu=lb.querySelector(".up"),bd=lb.querySelector(".down");
-var votes={},cur=null;
+var lb=document.getElementById("lb"),li=lb.querySelector("img"),rs=document.getElementById("rs"),rl=document.getElementById("rl"),cm=document.getElementById("cm"),cs=document.getElementById("cs"),bu=rs,bd=rs;
+var votes={},notes={},cur=null;
+var WORDS={1:"Fuck no",2:"Soft no",3:"Maybe",4:"Yes",5:"Fuck yes"},EMO={1:"💩",2:"👎",3:"🤷",4:"👍",5:"❤️"};
+function lvl(v){return v==="up"?4:v==="down"?2:(typeof v==="number"?v:null)}
 function key(u){var h=5381;for(var i=0;i<u.length;i++){h=((h<<5)+h+u.charCodeAt(i))>>>0}var g=0;for(var j=u.length-1;j>=0;j--){g=((g<<5)+g+u.charCodeAt(j))>>>0}return("00000000"+h.toString(16)).slice(-8)+("0000"+(g>>>0).toString(16)).slice(-4)}
 var imgs=[].slice.call(document.querySelectorAll("section img"));
 imgs.forEach(function(im){var w=document.createElement("span");w.className="pw";im.parentNode.insertBefore(w,im);w.appendChild(im);im.dataset.k=key(im.getAttribute("src"));
- im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;paint();lb.classList.add("on")})});
-function badges(){imgs.forEach(function(im){var w=im.parentNode,b=w.querySelector(".badge"),v=votes[im.dataset.k];if(!v){if(b)b.remove();return}if(!b){b=document.createElement("span");b.className="badge";w.appendChild(b)}b.textContent=v==="up"?"👍":"👎"})}
-function paint(){var v=votes[cur];bu.classList.toggle("on",v==="up");bd.classList.toggle("on",v==="down")}
-function load(){fetch(API,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){votes=d||{};badges();if(cur)paint()}).catch(function(){})}
+ im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;paint();paintNote();cs.textContent=notes[cur]?"Saved":"";lb.classList.add("on")})});
+function badges(){imgs.forEach(function(im){var w=im.parentNode,b=w.querySelector(".badge"),c=w.querySelector(".cbadge"),v=lvl(votes[im.dataset.k]);
+ if(!v){if(b)b.remove()}else{if(!b){b=document.createElement("span");b.className="badge";w.appendChild(b)}b.textContent=EMO[v]+" "+WORDS[v]}
+ if(!notes[im.dataset.k]){if(c)c.remove()}else if(!c){c=document.createElement("span");c.className="cbadge";c.textContent="💬";w.appendChild(c)}})}
+function paint(){var v=lvl(votes[cur]);if(v){rs.value=v;rs.classList.remove("unset");rl.textContent=EMO[v]+" "+WORDS[v]}else{rs.value=3;rs.classList.add("unset");rl.textContent="Not rated yet. Slide to rate."}}
+function paintNote(){if(document.activeElement!==cm){cm.value=notes[cur]||""}cs.textContent=notes[cur]?"Saved":""}
+function load(){fetch(API,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){votes=d||{};badges();if(cur)paint()}).catch(function(){});
+ fetch(API+"/comments",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){notes=d||{};badges();if(cur)paintNote()}).catch(function(){})}
 function send(v){var prev=votes[cur];if(v)votes[cur]=v;else delete votes[cur];paint();badges();
  fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:cur,vote:v})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){votes=d;badges();paint()}).catch(function(){if(prev)votes[cur]=prev;else delete votes[cur];paint();badges()})}
+function saveNote(){var k=cur,t=cm.value.trim();cs.textContent="Saving…";
+ fetch(API+"/comments",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:k,text:t||null})}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){notes=d;badges();if(cur===k)cs.textContent=t?"Saved":"Removed"}).catch(function(){if(cur===k)cs.textContent="Didn't save. Try again."})}
 function el(t,x,y,size){var e=document.createElement("div");e.className="fx";e.textContent=t;e.style.left=x+"px";e.style.top=y+"px";e.style.fontSize=(size||32)+"px";document.body.appendChild(e);return e}
 function center(b){var r=b.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]}
 function slow(o){o.duration*=2.2;if(o.delay)o.delay*=2.2;return o}
@@ -166,8 +181,12 @@ function poop(){var c=center(bd),x=c[0],y=c[1],bottom=innerHeight-60;
   for(var j=0;j<16;j++){(function(j){var e=el("💩",x-18,bottom-10,22+Math.random()*26),dx=(Math.random()-.5)*360,up=140+Math.random()*260;
    e.animate([{transform:"translate(0,0) scale(.3)",opacity:1},{transform:"translate("+dx*.6+"px,"+(-up)+"px) scale(1.1) rotate("+(dx)+"deg)",opacity:1,offset:.45},{transform:"translate("+dx+"px,"+(60)+"px) scale(.9) rotate("+(dx*2)+"deg)",opacity:0}],{duration:1300+Math.random()*500,easing:"cubic-bezier(.2,.7,.4,1)"}).onfinish=function(){e.remove()}})(j)}
   var big=el("💩",x-36,bottom-50,72);big.animate([{transform:"scale(.2)"},{transform:"scale(1.4)",offset:.4},{transform:"scale(1)",opacity:0}],{duration:1400}).onfinish=function(){big.remove()}}}
-bu.addEventListener("click",function(e){e.stopPropagation();if(votes[cur]==="up"){send(null)}else{send("up");celebrate()}});
-bd.addEventListener("click",function(e){e.stopPropagation();if(votes[cur]==="down"){send(null)}else{send("down");poop()}});
+var vb=lb.querySelector(".vote");["click","pointerdown","touchstart","mousedown"].forEach(function(ev){vb.addEventListener(ev,function(e){e.stopPropagation()})});
+rs.addEventListener("input",function(){var v=+rs.value;rs.classList.remove("unset");rl.textContent=EMO[v]+" "+WORDS[v]});
+rs.addEventListener("change",function(){var v=+rs.value;if(lvl(votes[cur])===v)return;send(v);if(v===5)celebrate();else if(v===1)poop()});
+lb.querySelector(".clr").addEventListener("click",function(){send(null)});
+lb.querySelector(".sv").addEventListener("click",saveNote);
+cm.addEventListener("input",function(){cs.textContent="Not saved yet"});
 lb.querySelector("img").addEventListener("click",function(e){e.stopPropagation()});
 lb.addEventListener("click",function(){lb.classList.remove("on")});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("on")});
