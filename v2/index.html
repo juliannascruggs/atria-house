@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="site-version" content="1795826925">
-<script>(function(){var cur="1795826925";function chk(){fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})}chk();setInterval(chk,60000);document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()})})();</script>
+<meta name="site-version" content="1795827491">
+<script>(function(){var cur="1795827491";function chk(){fetch(location.href.split("#")[0],{cache:"reload"}).then(function(r){return r.text()}).then(function(t){var m=t.match(/name="site-version" content="(\d+)"/);if(m&&m[1]!==cur&&!sessionStorage.getItem("sv"+m[1])){sessionStorage.setItem("sv"+m[1],"1");location.reload()}}).catch(function(){})}chk();setInterval(chk,60000);document.addEventListener("visibilitychange",function(){if(!document.hidden)chk()})})();</script>
 <title>v2 · Atria House</title>
 <style>
 :root{--bone:#EFE4D3;--mush:#B09C8A;--terra:#C8603A;--ochre:#BF8B36;--cocoa:#4B332B;--ox:#B0201B;--moss:#4F7A45;--blue:#8699A5}
@@ -20,7 +20,7 @@ section{padding:64px 6vw;max-width:1200px;margin:0 auto}
 h2{font-size:clamp(32px,5vw,52px);font-weight:400;margin:0 0 16px;line-height:1.05}
 .lede{font-size:20px;max-width:760px}
 .pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:20px}
-.sw{background:#fff;border-radius:8px;overflow:hidden;font:14px/1.3 system-ui}
+.sw{position:relative;cursor:pointer;background:#fff;border-radius:8px;overflow:hidden;font:14px/1.3 system-ui}
 .sw i{display:block;height:110px}
 .sw span{display:block;padding:10px 12px}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));margin-top:20px}
@@ -293,7 +293,7 @@ footer{padding:30px 6vw;font:13px/1.6 system-ui;color:var(--mush);background:var
 <section style="padding-top:0">
 <div class="k">The palette</div>
 <h2>Nine colors</h2>
-<p class="lede">Bone is the base. Each room takes two or three of the others.</p>
+<p class="lede">Bone is the base. Each room takes two or three of the others. Tap a color to rate it.</p>
 <div class="pal">
 <div class="sw"><i style="background:#EFE4D3;border-bottom:1px solid #e2d6c3"></i><span><b>Bone</b><br>#EFE4D3</span></div>
 <div class="sw"><i style="background:#B09C8A"></i><span><b>Mushroom</b><br>#B09C8A</span></div>
@@ -334,18 +334,25 @@ Mood: a clean shell with bold color in a few deliberate places. Not beige, not b
 </div></section>
 
 <footer>Atria House · design proposal. Reference photos belong to their photographers.</footer>
-<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><div class="rl" id="rl">Not rated yet. Slide to rate.</div><input type="range" id="rs" min="1" max="5" step="1" value="3" class="unset" aria-label="Rating, fuck no to fuck yes"><div class="ends"><span>Fuck no</span><span>Maybe</span><span>Fuck yes</span></div><button class="clr" type="button">Clear rating</button><textarea id="cm" rows="2" maxlength="2000" placeholder="Comments about this photo"></textarea><div class="crow"><span id="cs"></span><button class="sv" type="button">Save comment</button></div></div></div>
+<div id="lb"><button class="x" aria-label="Close">×</button><img alt=""><div class="vote"><div class="rl" id="rl">Not rated yet. Slide to rate.</div><input type="range" id="rs" min="1" max="5" step="1" value="3" class="unset" aria-label="Rating, fuck no to fuck yes"><div class="ends"><span>Fuck no</span><span>Fuck maybe</span><span>Fuck yes</span></div><button class="clr" type="button">Clear rating</button><textarea id="cm" rows="2" maxlength="2000" placeholder="Comments about this photo"></textarea><div class="crow"><span id="cs"></span><button class="sv" type="button">Save comment</button></div></div></div>
 <script>(function(){
 var API="https://juliannas-mac-mini.tail6a2ec1.ts.net:8443/atria-votes";
 var lb=document.getElementById("lb"),li=lb.querySelector("img"),rs=document.getElementById("rs"),rl=document.getElementById("rl"),cm=document.getElementById("cm"),cs=document.getElementById("cs"),bu=rs,bd=rs;
 var votes={},notes={},cur=null;
-var WORDS={1:"Fuck no",2:"Soft no",3:"Maybe",4:"Yes",5:"Fuck yes"},EMO={1:"💩",2:"👎",3:"🤷",4:"👍",5:"❤️"};
+var WORDS={1:"Fuck no",2:"Soft no",3:"Fuck maybe",4:"Kind of yes",5:"Fuck yes"},EMO={1:"💩",2:"👎",3:"🤷",4:"👍",5:"❤️"};
 function lvl(v){return v==="up"?4:v==="down"?2:(typeof v==="number"?v:null)}
 function key(u){var h=5381;for(var i=0;i<u.length;i++){h=((h<<5)+h+u.charCodeAt(i))>>>0}var g=0;for(var j=u.length-1;j>=0;j--){g=((g<<5)+g+u.charCodeAt(j))>>>0}return("00000000"+h.toString(16)).slice(-8)+("0000"+(g>>>0).toString(16)).slice(-4)}
 var imgs=[].slice.call(document.querySelectorAll("section img"));
 imgs.forEach(function(im){var w=document.createElement("span");w.className="pw";im.parentNode.insertBefore(w,im);w.appendChild(im);im.dataset.k=key(im.getAttribute("src"));
  im.addEventListener("click",function(){cur=im.dataset.k;li.src=im.currentSrc||im.src;li.alt=im.alt;paint();paintNote();cs.textContent=notes[cur]?"Saved":"";lb.classList.add("on")})});
-function badges(){imgs.forEach(function(im){var w=im.parentNode,b=w.querySelector(".badge"),c=w.querySelector(".cbadge"),v=lvl(votes[im.dataset.k]);
+
+var sws=[].slice.call(document.querySelectorAll(".pal .sw"));
+sws.forEach(function(sw){var i=sw.querySelector("i"),hex=(sw.textContent.match(/#[0-9A-Fa-f]{6}/)||[""])[0].toUpperCase();if(!hex)return;sw.dataset.k=key("color:"+hex);
+ sw.addEventListener("click",function(){cur=sw.dataset.k;var c=document.createElement("canvas");c.width=600;c.height=400;var x=c.getContext("2d");x.fillStyle=hex;x.fillRect(0,0,600,400);li.src=c.toDataURL();li.alt=sw.textContent.trim();paint();paintNote();lb.classList.add("on")})});
+function swb(){sws.forEach(function(sw){if(!sw.dataset.k)return;var b=sw.querySelector(".badge"),c=sw.querySelector(".cbadge"),v=lvl(votes[sw.dataset.k]);
+ if(!v){if(b)b.remove()}else{if(!b){b=document.createElement("span");b.className="badge";sw.appendChild(b)}b.textContent=EMO[v]+" "+WORDS[v]}
+ if(!notes[sw.dataset.k]){if(c)c.remove()}else if(!c){c=document.createElement("span");c.className="cbadge";c.textContent="💬";sw.appendChild(c)}})}
+function badges(){swb();imgs.forEach(function(im){var w=im.parentNode,b=w.querySelector(".badge"),c=w.querySelector(".cbadge"),v=lvl(votes[im.dataset.k]);
  if(!v){if(b)b.remove()}else{if(!b){b=document.createElement("span");b.className="badge";w.appendChild(b)}b.textContent=EMO[v]+" "+WORDS[v]}
  if(!notes[im.dataset.k]){if(c)c.remove()}else if(!c){c=document.createElement("span");c.className="cbadge";c.textContent="💬";w.appendChild(c)}})}
 function paint(){var v=lvl(votes[cur]);if(v){rs.value=v;rs.classList.remove("unset");rl.textContent=EMO[v]+" "+WORDS[v]}else{rs.value=3;rs.classList.add("unset");rl.textContent="Not rated yet. Slide to rate."}}
